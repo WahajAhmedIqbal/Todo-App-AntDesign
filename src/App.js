@@ -1,12 +1,11 @@
 import "./App.css";
 import "antd/dist/antd.css";
-import { Button } from "antd";
+import { Todo } from "./components/";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello world</h1>
-      <Button>Hello pakistan</Button>
+    <div style={{ backgroundColor: "#D8BFD8		", height: "100vh" }}>
+      <Todo />
     </div>
   );
 }
