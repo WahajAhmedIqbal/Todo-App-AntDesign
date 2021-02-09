@@ -4,7 +4,7 @@ import { Todo } from "./components/";
 
 function App() {
   return (
-    <div style={{ backgroundColor: "#53abf4		", height: "100vh" }}>
+    <div className="App">
       <Todo />
     </div>
   );
