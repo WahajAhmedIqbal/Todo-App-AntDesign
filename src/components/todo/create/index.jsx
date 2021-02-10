@@ -1,30 +1,23 @@
 import React, { useState } from "react";
 import { PlusCircleTwoTone } from "@ant-design/icons";
+import { Button, Col, Divider, List, Row, Typography } from "antd";
 
-const Create = ({ onclick, listitem }) => {
-  const [input, setInput] = useState(listitem);
+const Create = () => {
   return (
     <div
-      style={{
-        position: "sticky",
-        bottom: "0px",
-        textAlign: "center",
-        height: 180,
-        backgroundImage:
-          " linear-gradient(to bottom, rgba(500,73,49,0), silver)",
-      }}
+    // style={{
+    //   position: "sticky",
+    //   bottom: "0px",
+    //   textAlign: "center",
+    //   height: 180,
+    //   backgroundImage:
+    //     " linear-gradient(to bottom, rgba(500,73,49,0), silver)",
+    // }}
     >
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        type="text"
-        placeholder="Add Item"
-        style={{ display: null }}
-      />
-      <PlusCircleTwoTone
+      {/* <PlusCircleTwoTone
         onClick={onclick}
         style={{ fontSize: 65, cursor: "pointer" }}
-      />
+      /> */}
     </div>
   );
 };
