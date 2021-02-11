@@ -1,13 +1,13 @@
-// import { Button, Col, Divider, List, Row, Typography } from "antd";
 import React, { useState } from "react";
 import { HeaderComponent, FooterComponent } from "../../containers";
 import List from "./create/list";
-import Create from "./create";
-import Delete from "./deleted";
+import Update from "./update";
 
 const Todo = () => {
-  const [itemList, setItemList] = useState([]);
+  const [itemList, setItemList] = useState(["item1", "item2"]);
   const [inputChagne, setInputChagne] = useState("");
+  const [updatedInput, setUpdatedInput] = useState("");
+  const [updateState, setupdateState] = useState(false);
 
   const handlesubmit = (e) => {
     e.preventDefault();
@@ -16,11 +16,19 @@ const Todo = () => {
   };
 
   const deleteHander = (id) => {
-    const newlist = itemList.filter(
-      (arrElem, index) => console.log("--->index", index) !== id
-    );
-    console.log("--->id", id);
-    setItemList([...itemList, newlist]);
+    setItemList(itemList.filter((_, index) => index !== id));
+  };
+
+  const edithandler = (id) => {
+    setupdateState(true);
+    console.log("--> id", id);
+    const newlist = itemList.find((_, index) => index === id);
+    console.log(newlist);
+  };
+
+  const updatehandler = (item, id) => {
+    setupdateState(false);
+    setInputChagne(item);
   };
 
   return (
@@ -31,70 +39,47 @@ const Todo = () => {
         {itemList.map((item, index) => {
           if (item.length === 0) {
             return null;
-          } else
-            return (
-              <li
-                key={index}
-                style={{
-                  backgroundColor: "white",
-                  margin: 15,
-                  marginTop: 20,
-                  marginBottom: 30,
-                  boxShadow: "0px 25px 10px -9px rgba(0,0,0,0.49)",
-                  borderRadius: "42%",
-                  padding: 25,
-                  listStyle: "none",
-                  fontSize: "x-large",
-                  display: "flex",
-                  flex: 1,
-                  justifyContent: "space-between",
-                }}
-              >
-                {item}
-                <Delete id={index} onselected={deleteHander} />
-              </li>
-            );
+          } else {
+            if (updateState) {
+              return (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    updatehandler(item);
+                  }}
+                >
+                  <input type="text" id={index} />
+                  {/* id={index}
+                  item={item} */}
+                </form>
+                // <Update
+                //   edithandler={edithandler}
+                //   id={index}
+                //   item={item}
+                //   setupdateState={setupdateState}
+                //   setInputChagne={setInputChagne}
+                //   inputChagne={inputChagne}
+                // />
+              );
+            } else {
+              return (
+                <List
+                  key={index}
+                  item={item}
+                  id={index}
+                  deleteHander={deleteHander}
+                  onEdit={edithandler}
+                />
+              );
+            }
+          }
         })}
 
-        {/* <List
-          size="small"
-          dataSource={itemList}
-          renderItem={(item) => (
-            <List.Item
-              style={{
-                backgroundColor: "white",
-                margin: 15,
-                marginTop: 20,
-                marginBottom: 30,
-                boxShadow: "0px 25px 10px -9px rgba(0,0,0,0.49)",
-                borderRadius: "42%",
-                padding: 25,
-              }}
-            >
-              {item}
-            </List.Item>
-          )}
-        /> */}
-        {/* <input
-          type="text"
-          placeholder="add Item"
-          value={inputChagne}
-          onChange={(e) => setInputChagne(e.target.value)}
-        /> */}
         <FooterComponent
-          input={
-            <input
-              type="text"
-              placeholder="add Item"
-              value={inputChagne}
-              onChange={(e) => setInputChagne(e.target.value)}
-            />
-          }
+          inputChagne={inputChagne}
+          setInputChagne={setInputChagne}
           handlesubmit={(e) => handlesubmit(e)}
         />
-        {/* header={<HeaderComponent />} */}
-        {/* footer={<FooterComponent />} */}
-        {/* <Create /> */}
       </div>
     </div>
   );
