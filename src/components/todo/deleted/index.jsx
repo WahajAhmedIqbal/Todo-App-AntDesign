@@ -7,8 +7,8 @@ const Delete = ({ id, onselected }) => {
       <span
         className="cross"
         style={{
-          fontSize: "x-large",
-          marginTop: -8,
+          // fontSize: "x-large",
+          // marginTop: -8,
         }}
       >
         <CloseCircleOutlined

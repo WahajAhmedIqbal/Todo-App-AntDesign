@@ -13,7 +13,7 @@ const Footer = ({ handlesubmit, input, setInputChagne, inputChagne }) => {
         position: "sticky",
         bottom: "0px",
         textAlign: "center",
-        height: 245,
+        height: 150,
         backgroundImage:
           " linear-gradient(to bottom, rgba(500,73,49,0), silver)",
       }}
@@ -29,6 +29,7 @@ const Footer = ({ handlesubmit, input, setInputChagne, inputChagne }) => {
             border: "2px solid",
             marginBottom: 10,
             borderRadius: 20,
+            outline: 'none'
           }}
           type="text"
           placeholder="add Item"

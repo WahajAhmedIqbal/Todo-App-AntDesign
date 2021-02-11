@@ -11,30 +11,31 @@ const List = ({ item, deleteHander, id, onEdit }) => {
         key={id}
         style={{
           backgroundColor: "white",
-          margin: 15,
-          marginTop: 20,
-          marginBottom: 30,
-          boxShadow: "0px 25px 10px -9px rgba(0,0,0,0.49)",
-          padding: "10px 15px 46px 20px",
+          margin: '2px 4px 16px ',
+          // margin: 0,
+          // marginTop: 10,
+          // marginBottom: 30,
+          boxShadow: "rgb(204 204 204 / 40%) 0px 19px 4px -11px",
+          padding: "9px 26px 32px 24px",
           listStyle: "none",
-          fontSize: 24,
+          fontSize: 15,
           display: "flex",
           flex: 1,
           justifyContent: "space-between",
-          height: 50,
-          width: "90%",
+          height: 13,
+          width: "97%",
           borderRadius: 27,
         }}
       >
         {item}
-        <div className="inputelemet" style={{ display: "flex" }}>
-          <EditOutlined
+        {/* <div className="inputelemet" style={{ display: "flex" }}> */}
+          {/* <EditOutlined
             style={{ paddingRight: 15, paddingTop: 10 }}
             onClick={() => onEdit(id)}
-          />
+          /> */}
 
           <Delete id={id} onselected={deleteHander} />
-        </div>
+        {/* </div> */}
       </li>
     </div>
   );
