@@ -5,6 +5,7 @@ import Update from "./update";
 
 const Todo = () => {
   const [itemList, setItemList] = useState(["item1", "item2"]);
+  const [updatedList, setUpdatedList] = useState([])
   const [inputChagne, setInputChagne] = useState("");
   const [updatedInput, setUpdatedInput] = useState("");
   const [updateState, setupdateState] = useState(false);
@@ -13,6 +14,7 @@ const Todo = () => {
     e.preventDefault();
     setItemList([inputChagne, ...itemList]);
     setInputChagne("");
+    
   };
 
   const deleteHander = (id) => {
@@ -24,62 +26,60 @@ const Todo = () => {
     console.log("--> id", id);
     const newlist = itemList.find((_, index) => index === id);
     console.log(newlist);
+    updateFun(id , newlist)
+    setupdateState(true)
   };
 
-  const updatehandler = (item, id) => {
-    setupdateState(false);
-    setInputChagne(item);
-  };
+  const updateFun = (id, newlist) => {
+    const updatedlist = newlist
+    setUpdatedList( updatedlist)
+    console.log('upadeted state', updatedList)
+
+    console.log('updated fun click', id, updatedlist)
+    console.log('updated input---> ',updatedlist)
+    setUpdatedInput(updatedlist)
+  }
+
+  const cancelFun = () => {
+    setupdateState(false)
+
+  }
+
+  
 
   return (
     <div className="container" style={{ backgrounColor: "aliceblue" }}>
       <div className="listbox">
         <HeaderComponent />
-
+        <section style={{
+          minHeight:'80vh'
+        }}>
         {itemList.map((item, index) => {
           if (item.length === 0) {
             return null;
           } else {
-            if (updateState) {
-              return (
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    updatehandler(item);
-                  }}
-                >
-                  <input type="text" id={index} />
-                  {/* id={index}
-                  item={item} */}
-                </form>
-                // <Update
-                //   edithandler={edithandler}
-                //   id={index}
-                //   item={item}
-                //   setupdateState={setupdateState}
-                //   setInputChagne={setInputChagne}
-                //   inputChagne={inputChagne}
-                // />
-              );
-            } else {
               return (
                 <List
                   key={index}
                   item={item}
                   id={index}
                   deleteHander={deleteHander}
-                  onEdit={edithandler}
+                  onEdit={() => edithandler(index)}
                 />
               );
             }
           }
-        })}
-
-        <FooterComponent
+        )}
+        </section>
+       { (updateState) ? <Update setUpdatedInput={setUpdatedInput} updatedInput={updatedInput} updateFun={updateFun} cancelFun={cancelFun}/> : <FooterComponent inputChagne={inputChagne} setInputChagne={setInputChagne} handlesubmit={(e) => handlesubmit(e)}/> 
+         }
+         {/* {updateState &&  } */}
+          {/* <Update  /> */}
+        {/* <FooterComponent
           inputChagne={inputChagne}
           setInputChagne={setInputChagne}
           handlesubmit={(e) => handlesubmit(e)}
-        />
+        /> */}
       </div>
     </div>
   );

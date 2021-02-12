@@ -1,21 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Create from "../../components/todo/create";
 import { PlusCircleTwoTone } from "@ant-design/icons";
+import image from '../../assests/add.png'
 
 const Footer = ({ handlesubmit, input, setInputChagne, inputChagne }) => {
-  const [inputtype, setinputtype] = useState(true);
+  const [inputtype, setinputtype] = useState(false);
 
+  const handleInput = () => {
+    setinputtype(!inputtype)
+  }
+
+ 
   let classes = !inputtype ? "none" : null;
 
   return (
     <div
       style={{
         position: "sticky",
-        bottom: "0px",
+        bottom: 5,
         textAlign: "center",
-        height: 150,
+        height: 149,
         backgroundImage:
-          " linear-gradient(to bottom, rgba(500,73,49,0), silver)",
+          " linear-gradient(to bottom, rgba(500,73,49,0), azure)",
       }}
     >
       <form onSubmit={handlesubmit} style={{ display: "grid" }}>
@@ -23,17 +29,19 @@ const Footer = ({ handlesubmit, input, setInputChagne, inputChagne }) => {
           className={classes}
           style={{
             display: classes,
-            height: 60,
-            width: "77%",
+            height: 40,
+            width: "97%",
             justifySelf: "center",
             border: "2px solid",
             marginBottom: 10,
             borderRadius: 20,
-            outline: 'none'
+            outline: 'none',
+            textAlign: 'center'
           }}
           type="text"
           placeholder="add Item"
           value={inputChagne}
+          
           onChange={(e) => setInputChagne(e.target.value)}
         />
         <button
@@ -44,10 +52,26 @@ const Footer = ({ handlesubmit, input, setInputChagne, inputChagne }) => {
             justifySelf: "center",
           }}
         >
-          <PlusCircleTwoTone
-            onClick={handlesubmit}
+          <spna
+          style={{
+            position:'fixed',
+            bottom: 11,
+            left: '42%'
+          }}
+          className='img'>
+          <img
+          style={{
+            width:60
+          }}
+          src={image}
+          onClick={handleInput}
+          /> 
+          </spna>
+          {/* <PlusCircleTwoTone
+          onClick={handleInput}
+             onClick={handlesubmit}
             style={{ fontSize: 65, cursor: "pointer" }}
-          />
+          /> */}
         </button>
       </form>
     </div>

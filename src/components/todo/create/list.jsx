@@ -5,6 +5,11 @@ import Create from "./index";
 import { EditOutlined } from "@ant-design/icons";
 
 const List = ({ item, deleteHander, id, onEdit }) => {
+
+  // const edithandler = () => {
+  //   console.log('edit work' )
+  // }
+
   return (
     <div>
       <li
@@ -16,7 +21,7 @@ const List = ({ item, deleteHander, id, onEdit }) => {
           // marginTop: 10,
           // marginBottom: 30,
           boxShadow: "rgb(204 204 204 / 40%) 0px 19px 4px -11px",
-          padding: "9px 26px 32px 24px",
+          padding: "9px 31px 32px 29px",
           listStyle: "none",
           fontSize: 15,
           display: "flex",
@@ -29,10 +34,11 @@ const List = ({ item, deleteHander, id, onEdit }) => {
       >
         {item}
         {/* <div className="inputelemet" style={{ display: "flex" }}> */}
-          {/* <EditOutlined
+          <EditOutlined
             style={{ paddingRight: 15, paddingTop: 10 }}
             onClick={() => onEdit(id)}
-          /> */}
+            // onClick={() => edithandler()}
+          />
 
           <Delete id={id} onselected={deleteHander} />
         {/* </div> */}
