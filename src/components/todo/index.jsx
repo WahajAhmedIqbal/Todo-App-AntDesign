@@ -19,25 +19,33 @@ const Todo = () => {
 
   const deleteHander = (id) => {
     setItemList(itemList.filter((_, index) => index !== id));
+    setupdateState(false)
   };
 
   const edithandler = (id) => {
     setupdateState(true);
-    console.log("--> id", id);
+    console.log("edithandler--> id", id);
     const newlist = itemList.find((_, index) => index === id);
-    console.log(newlist);
-    updateFun(id , newlist)
-    setupdateState(true)
+    console.log('-----> item  ',newlist);
+    setUpdatedList(newlist)
+    setUpdatedInput(newlist)
+    console.log('input test--> ',updatedInput )
   };
 
-  const updateFun = (id, newlist) => {
-    const updatedlist = newlist
-    setUpdatedList( updatedlist)
-    console.log('upadeted state', updatedList)
+  
 
-    console.log('updated fun click', id, updatedlist)
-    console.log('updated input---> ',updatedlist)
-    setUpdatedInput(updatedlist)
+  const updateFun = () => {
+    console.log('input test--> ',updatedInput )
+
+
+    setItemList([...itemList, updatedInput])
+
+    setupdateState(false)
+  
+   
+
+
+    
   }
 
   const cancelFun = () => {
@@ -71,8 +79,9 @@ const Todo = () => {
           }
         )}
         </section>
-       { (updateState) ? <Update setUpdatedInput={setUpdatedInput} updatedInput={updatedInput} updateFun={updateFun} cancelFun={cancelFun}/> : <FooterComponent inputChagne={inputChagne} setInputChagne={setInputChagne} handlesubmit={(e) => handlesubmit(e)}/> 
-         }
+        {/* <Update />
+        <FooterComponent /> */}
+       { (updateState) ? <Update setUpdatedInput={setUpdatedInput} updatedInput={updatedInput} updateFun={updateFun} cancelFun={cancelFun}/> : <FooterComponent inputChagne={inputChagne} setInputChagne={setInputChagne} handlesubmit={(e) => handlesubmit(e)}/> }
          {/* {updateState &&  } */}
           {/* <Update  /> */}
         {/* <FooterComponent

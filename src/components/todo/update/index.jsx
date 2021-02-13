@@ -5,21 +5,9 @@ import check from '../../../assests/check.png'
 
 const Update = ({setUpdatedInput, updateFun, cancelFun, updatedInput}) => {
 
-  const [updateinput, setUpdateInput] = useState('')
-
-  setUpdatedInput(updateinput)
-
-
-
   const updateform = (e) => {
     e.preventDefault()
   }
-
-  
-
-  
- 
-
   return (
       <div
       style={{
@@ -50,7 +38,7 @@ const Update = ({setUpdatedInput, updateFun, cancelFun, updatedInput}) => {
           }}
           type="text"
           value={updatedInput}
-          onChange={(e) => setUpdateInput(e)}
+          onChange={(e) => setUpdatedInput(e.target.value)}
         />
         <button
           style={{

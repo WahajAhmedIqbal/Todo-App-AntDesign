@@ -33,15 +33,10 @@ const List = ({ item, deleteHander, id, onEdit }) => {
         }}
       >
         {item}
-        {/* <div className="inputelemet" style={{ display: "flex" }}> */}
-          <EditOutlined
-            style={{ paddingRight: 15, paddingTop: 10 }}
-            onClick={() => onEdit(id)}
-            // onClick={() => edithandler()}
-          />
-
+        <div className="inputelemet" style={{ display: '-webkit-inline-box' }}>
+          <EditOutlined style={{paddingRight:10}}onClick={() => onEdit(id)}/>
           <Delete id={id} onselected={deleteHander} />
-        {/* </div> */}
+        </div>
       </li>
     </div>
   );

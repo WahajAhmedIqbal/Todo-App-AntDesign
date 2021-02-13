@@ -17,7 +17,7 @@ const Footer = ({ handlesubmit, input, setInputChagne, inputChagne }) => {
     <div
       style={{
         position: "sticky",
-        bottom: 5,
+        bottom: '-10px',
         textAlign: "center",
         height: 149,
         backgroundImage:
@@ -33,7 +33,7 @@ const Footer = ({ handlesubmit, input, setInputChagne, inputChagne }) => {
             width: "97%",
             justifySelf: "center",
             border: "2px solid",
-            marginBottom: 10,
+            marginBottom: 50,
             borderRadius: 20,
             outline: 'none',
             textAlign: 'center'
