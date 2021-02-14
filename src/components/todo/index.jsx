@@ -1,46 +1,70 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HeaderComponent, FooterComponent } from "../../containers";
 import List from "./create/list";
 import Update from "./update";
 
 const Todo = () => {
-  const [itemList, setItemList] = useState(["item1", "item2"]);
-  const [updatedList, setUpdatedList] = useState([])
+  const [itemList, setItemList] = useState(['item1', 'item22']);
   const [inputChagne, setInputChagne] = useState("");
+  const [updatedList, setUpdatedList] = useState([])
   const [updatedInput, setUpdatedInput] = useState("");
   const [updateState, setupdateState] = useState(false);
 
   const handlesubmit = (e) => {
     e.preventDefault();
+
+//     const newlist = {
+//       id: Math.floor(Math.random() * 500),
+//       item: inputChagne
+//     }
+//     console.log(newlist)
+// setItemList([newlist , ...itemList])
     setItemList([inputChagne, ...itemList]);
     setInputChagne("");
     
   };
+  
 
   const deleteHander = (id) => {
+
+    // const removearr = [...itemList].filter((item, index) => index !== id )
+    // setItemList(removearr)
     setItemList(itemList.filter((_, index) => index !== id));
     setupdateState(false)
   };
 
   const edithandler = (id) => {
     setupdateState(true);
-    console.log("edithandler--> id", id);
-    const newlist = itemList.find((_, index) => index === id);
-    console.log('-----> item  ',newlist);
+    const newlist = itemList.find((item, index) => index === id);
+    
+    console.log('newlist ---> edit fun', newlist)
+    
+
+    // const nlist = itemList.filter((item, index) => index === id ? console.log('item filter===--->', item, 'index', index): console.log('null'))
+    // setUpdatedList([...updatedList, nlist])
     setUpdatedList(newlist)
     setUpdatedInput(newlist)
-    console.log('input test--> ',updatedInput )
-  };
+    };
 
   
-
+  
   const updateFun = () => {
-    console.log('input test--> ',updatedInput )
 
+   
+     const uplist = itemList.indexOf(updatedList) 
+     console.log('--->uplist',uplist)
 
-    setItemList([...itemList, updatedInput])
+    const nlist = itemList.filter((item, index) => index === uplist )
+    console.log('nlist---', nlist)
+
+    
+
+    setItemList(prev => prev.map((item, index) => (index === uplist ? updatedInput : inputChagne)))
+
+   
 
     setupdateState(false)
+    setUpdatedInput('')
   
    
 
