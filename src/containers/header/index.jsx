@@ -5,7 +5,6 @@ import { AppstoreOutlined } from "@ant-design/icons";
 const Header = () => {
   return (
     <div
-      className="main-box"
       style={{
         position: "sticky",
         top: "5px",
@@ -18,15 +17,13 @@ const Header = () => {
         
       }}
     >
-      {/* <div className="header"> */}
-        <spna className='icon' style={{fontSize:16, color: 'cornflowerblue'}}>
+     <span className='icon' style={{fontSize:16, color: 'cornflowerblue'}}>
       <AppstoreOutlined />
-      </spna>
+      </span>
       <spna className='heading' style={{marginLeft:'-23px', marginTop: 8}}>
         <h1 style={{fontSize: 15}}>All Task</h1>
         </spna>
         <span className="empty-box"></span>
-      {/* </div> */}
     </div>
   );
 };

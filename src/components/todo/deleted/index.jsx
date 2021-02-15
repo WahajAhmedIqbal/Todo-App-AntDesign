@@ -1,16 +1,12 @@
 import React from "react";
 import { CloseCircleOutlined } from "@ant-design/icons";
 
-const Delete = ({ id, onselected }) => {
+const Delete = ({ id, onselected  }) => {
+
   return (
     <div>
       <span
-        className="cross"
-        style={{
-          // fontSize: "x-large",
-          // marginTop: -8,
-        }}
-      >
+        className="cross ">
         <CloseCircleOutlined
           onClick={() => {
             onselected(id);

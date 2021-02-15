@@ -1,136 +1,87 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { HeaderComponent, FooterComponent } from "../../containers";
 import List from "./create/list";
 import Update from "./update";
 
 const Todo = () => {
-  const [itemList, setItemList] = useState(['item1', 'item22']);
+  const [itemList, setItemList] = useState([]);
   const [inputChagne, setInputChagne] = useState("");
   const [updatedList, setUpdatedList] = useState([])
   const [updatedInput, setUpdatedInput] = useState("");
-  const [updateState, setupdateState] = useState(false);
-  const [selectedInputId, setSelectedInputId] = useState(null);
-
+  const [updateState, setupdateState] = useState(false);  
+ 
   const handlesubmit = (e) => {
     e.preventDefault();
-    //     const newlist = {
-    //       id: Math.floor(Math.random() * 500),
-    //       item: inputChagne
-    //     }
-    //     console.log(newlist)
-    // setItemList([newlist , ...itemList])
-    inputChagne !== "" && setItemList([...itemList, inputChagne]) && setInputChagne("");
+    inputChagne !== "" && setItemList([...itemList, inputChagne]) 
+    setInputChagne('')
   };
 
-
   const deleteHander = (id) => {
-
-    // const removearr = [...itemList].filter((item, index) => index !== id )
-    // setItemList(removearr)
     setItemList(itemList.filter((_, index) => index !== id));
-    setupdateState(false)
+    setupdateState(false)   
   };
 
   const edithandler = (id) => {
     setupdateState(true);
-    console.log(updatedInput)
-    // setItemList([...itemList, inputChagne])
-    setSelectedInputId(id)
-    console.log(id)
-    console.log(itemList)
-
-    const newlist = itemList.find((item, index) => index === id);
-
-    // console.log('newlist ---> edit fun', newlist)
-
-
-    // // const nlist = itemList.filter((item, index) => index === id ? console.log('item filter===--->', item, 'index', index): console.log('null'))
-    // // setUpdatedList([...updatedList, nlist])
+    const newlist = itemList.find((_, index) => index === id);
     setUpdatedInput(newlist)
     setUpdatedList(newlist)
   };
-
-
-
   const updateFun = () => {
-
-    console.log('itemlist before update---', itemList)
-    console.log('updatedlist before update---', updatedList)
-
-
-
     const uplist = itemList.indexOf(updatedList)
-    console.log('--->uplist', uplist)
-    console.log('--->selected ID', selectedInputId)
-
-    // const nlist = itemList.filter((item, index) => index === uplist )
-    // console.log('nlist---', nlist)
-
-    console.log(updatedInput)
-
-    itemList.filter((item, index) => {
+    itemList.filter((_, index) => {
       if (index === uplist) {
           itemList[uplist] = updatedInput
       }
     })
-
-    // alert(JSON.stringify(matchValue))
-
-
-
-
     setupdateState(false)
     setUpdatedInput('')
-
-
-
-
-
   }
 
   const cancelFun = () => {
     setupdateState(false)
   }
-
-
-
+  
   return (
     <div className="container" style={{ backgrounColor: "aliceblue" }}>
       <div className="listbox">
         <HeaderComponent />
-        <section style={{
-          minHeight: '80vh'
+        <section
+        
+        style={{
+          minHeight: '66.2vh'
         }}>
-          {itemList.map((item, index) => {
-            if (item.length === 0) {
-              return null;
-            } else {
-              return (
-                <List
-                  key={index}
-                  item={item}
-                  id={index}
-                  deleteHander={deleteHander}
-                  onEdit={() => edithandler(index)}
-                />
-              );
-            }
-          }
-          )}
+          {
+            itemList.length <= 0 ? <h1 
+            style={{
+              fontSize: 35,
+              textAlign: "center",
+              paddingTop: 35,
+              color: "darkgrey"
+            }}
+            >Please Insert Items</h1> 
+            : itemList.map((item, index) => {
+              if (itemList.length < 0) {
+                return <h1>hello worl</h1>;
+              } else {
+                 return (
+                  <List
+                 
+                    key={index}
+                    item={item}
+                    id={index}
+                    deleteHander={deleteHander}
+                    onEdit={() => edithandler(index)}
+                  />
+                );
+              }
+             }
+            )} 
         </section>
-        {/* <Update />
-        <FooterComponent /> */}
         {(updateState) ?
           <Update setUpdatedInput={setUpdatedInput} updatedInput={updatedInput} updateFun={updateFun} cancelFun={cancelFun} />
           :
           <FooterComponent inputChagne={inputChagne} setInputChagne={setInputChagne} handlesubmit={(e) => handlesubmit(e)} />}
-        {/* {updateState &&  } */}
-        {/* <Update  /> */}
-        {/* <FooterComponent
-          inputChagne={inputChagne}
-          setInputChagne={setInputChagne}
-          handlesubmit={(e) => handlesubmit(e)}
-        /> */}
       </div>
     </div>
   );

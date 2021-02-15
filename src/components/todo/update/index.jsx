@@ -12,7 +12,6 @@ const Update = ({setUpdatedInput, updateFun, cancelFun, updatedInput}) => {
       <div
       style={{
         position: "sticky",
-        // bottom: "5px",
         bottom: 1,
         textAlign: "center",
         height: 138,
@@ -21,20 +20,19 @@ const Update = ({setUpdatedInput, updateFun, cancelFun, updatedInput}) => {
       }}
     >
    <form style={{ display: "grid" }} onSubmit={e => updateform(e)}>
-     {/* <h4>update Task</h4> */}
-     
         <input
           className=''
           style={{
             display: null,
-            height: 40,
-            width: "97%",
+            height: 41,
+            width: "98%",
             justifySelf: "center",
-            border: "2px solid",
-            marginBottom: 10,
+            border: "none",
+            marginBottom: 50,
             borderRadius: 20,
             outline: 'none',
-            textAlign: 'center'
+            textAlign: 'center',
+            backgroundColor: 'whitesmoke'
           }}
           type="text"
           value={updatedInput}
@@ -48,7 +46,7 @@ const Update = ({setUpdatedInput, updateFun, cancelFun, updatedInput}) => {
             justifySelf: "center",
           }}
         >
-          <spna
+          <span
           style={{
             position:'fixed',
             bottom: 11,
@@ -70,12 +68,7 @@ const Update = ({setUpdatedInput, updateFun, cancelFun, updatedInput}) => {
           src={cancel}
           onClick={cancelFun}
           /> 
-          </spna>
-          {/* <PlusCircleTwoTone
-          onClick={handleInput}
-             onClick={handlesubmit}
-            style={{ fontSize: 65, cursor: "pointer" }}
-          /> */}
+          </span>
         </button>
    </form>
     </div>

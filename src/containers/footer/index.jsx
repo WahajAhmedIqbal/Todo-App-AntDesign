@@ -1,18 +1,24 @@
-import React, { useEffect, useState } from "react";
-import Create from "../../components/todo/create";
-import { PlusCircleTwoTone } from "@ant-design/icons";
+import React, { useState } from "react";
 import image from '../../assests/add.png'
 
 const Footer = ({ inputChagne, setInputChagne, handlesubmit, }) => {
   const [inputtype, setinputtype] = useState(false);
+  const [rotat, setRotat] = useState(false);
+  const [colo, setColo] = useState(false);
+  
+
 
   const handleInput = () => {
     setinputtype(!inputtype)
+    setRotat(!rotat)
+    setColo(!colo)
   }
 
+  let classes = !inputtype ? "none " : null;
+  let rot = rotat ? 'rotate(45deg)' : null
+  console.log(rot)
+  let colour = colo ?  '#f95454' : 'cornflowerblue'
  
-  let classes = !inputtype ? "none" : null;
-
   return (
     <div
       style={{
@@ -26,25 +32,28 @@ const Footer = ({ inputChagne, setInputChagne, handlesubmit, }) => {
     >
       <form onSubmit={handlesubmit} style={{ display: "grid" }}>
         <input
-          className={classes}
+          className='animate__animated animate__pulse animate__faster' 
           style={{
             display: classes,
-            height: 40,
-            width: "97%",
+            height: 41,
+            width: "98%",
             justifySelf: "center",
-            border: "2px solid",
+            border: 'none',
             marginBottom: 50,
             borderRadius: 20,
             outline: 'none',
-            textAlign: 'center'
+            textAlign: 'center',
+            backgroundColor: 'whitesmoke'
           }}
           type="text"
-          placeholder="add Item"
+          placeholder="Add Items"
           value={inputChagne}
           onChange={(e) => setInputChagne(e.target.value)}
         />
         <button
+        className='animate__fadeOut '
           style={{
+
             background: "none",
             border: "none",
             width: "fit-content",
@@ -60,17 +69,16 @@ const Footer = ({ inputChagne, setInputChagne, handlesubmit, }) => {
           className='img'>
           <img
           style={{
-            width:60
+            width:60,
+            transform: rot,
+            backgroundColor: colour,
+            borderRadius: 43,
+            transitionDuration: '0.3s'
           }}
           src={image}
           onClick={handleInput}
           /> 
           </span>
-          {/* <PlusCircleTwoTone
-          onClick={handleInput}
-             onClick={handlesubmit}
-            style={{ fontSize: 65, cursor: "pointer" }}
-          /> */}
         </button>
       </form>
     </div>
