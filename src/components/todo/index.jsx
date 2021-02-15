@@ -9,21 +9,19 @@ const Todo = () => {
   const [updatedList, setUpdatedList] = useState([])
   const [updatedInput, setUpdatedInput] = useState("");
   const [updateState, setupdateState] = useState(false);
+  const [selectedInputId, setSelectedInputId] = useState(null);
 
   const handlesubmit = (e) => {
     e.preventDefault();
-
-//     const newlist = {
-//       id: Math.floor(Math.random() * 500),
-//       item: inputChagne
-//     }
-//     console.log(newlist)
-// setItemList([newlist , ...itemList])
-    setItemList([inputChagne, ...itemList]);
-    setInputChagne("");
-    
+    //     const newlist = {
+    //       id: Math.floor(Math.random() * 500),
+    //       item: inputChagne
+    //     }
+    //     console.log(newlist)
+    // setItemList([newlist , ...itemList])
+    inputChagne !== "" && setItemList([...itemList, inputChagne]) && setInputChagne("");
   };
-  
+
 
   const deleteHander = (id) => {
 
@@ -35,61 +33,78 @@ const Todo = () => {
 
   const edithandler = (id) => {
     setupdateState(true);
+    console.log(updatedInput)
+    // setItemList([...itemList, inputChagne])
+    setSelectedInputId(id)
+    console.log(id)
+    console.log(itemList)
+
     const newlist = itemList.find((item, index) => index === id);
-    
-    console.log('newlist ---> edit fun', newlist)
-    
 
-    // const nlist = itemList.filter((item, index) => index === id ? console.log('item filter===--->', item, 'index', index): console.log('null'))
-    // setUpdatedList([...updatedList, nlist])
-    setUpdatedList(newlist)
+    // console.log('newlist ---> edit fun', newlist)
+
+
+    // // const nlist = itemList.filter((item, index) => index === id ? console.log('item filter===--->', item, 'index', index): console.log('null'))
+    // // setUpdatedList([...updatedList, nlist])
     setUpdatedInput(newlist)
-    };
+    setUpdatedList(newlist)
+  };
 
-  
-  
+
+
   const updateFun = () => {
 
-   
-     const uplist = itemList.indexOf(updatedList) 
-     console.log('--->uplist',uplist)
+    console.log('itemlist before update---', itemList)
+    console.log('updatedlist before update---', updatedList)
 
-    const nlist = itemList.filter((item, index) => index === uplist )
-    console.log('nlist---', nlist)
 
-    
 
-    setItemList(prev => prev.map((item, index) => (index === uplist ? updatedInput : inputChagne)))
+    const uplist = itemList.indexOf(updatedList)
+    console.log('--->uplist', uplist)
+    console.log('--->selected ID', selectedInputId)
 
-   
+    // const nlist = itemList.filter((item, index) => index === uplist )
+    // console.log('nlist---', nlist)
+
+    console.log(updatedInput)
+
+    itemList.filter((item, index) => {
+      if (index === uplist) {
+          itemList[uplist] = updatedInput
+      }
+    })
+
+    // alert(JSON.stringify(matchValue))
+
+
+
 
     setupdateState(false)
     setUpdatedInput('')
-  
-   
 
 
-    
+
+
+
   }
 
   const cancelFun = () => {
     setupdateState(false)
-
   }
 
-  
+
 
   return (
     <div className="container" style={{ backgrounColor: "aliceblue" }}>
       <div className="listbox">
         <HeaderComponent />
         <section style={{
-          minHeight:'80vh'
+          minHeight: '80vh'
         }}>
-        {itemList.map((item, index) => {
-          if (item.length === 0) {
-            return null;
-          } else {
+          {itemList.map((item, index) => {
+            if (item.length === 0) {
+              return null;
+            } else {
               return (
                 <List
                   key={index}
@@ -101,13 +116,16 @@ const Todo = () => {
               );
             }
           }
-        )}
+          )}
         </section>
         {/* <Update />
         <FooterComponent /> */}
-       { (updateState) ? <Update setUpdatedInput={setUpdatedInput} updatedInput={updatedInput} updateFun={updateFun} cancelFun={cancelFun}/> : <FooterComponent inputChagne={inputChagne} setInputChagne={setInputChagne} handlesubmit={(e) => handlesubmit(e)}/> }
-         {/* {updateState &&  } */}
-          {/* <Update  /> */}
+        {(updateState) ?
+          <Update setUpdatedInput={setUpdatedInput} updatedInput={updatedInput} updateFun={updateFun} cancelFun={cancelFun} />
+          :
+          <FooterComponent inputChagne={inputChagne} setInputChagne={setInputChagne} handlesubmit={(e) => handlesubmit(e)} />}
+        {/* {updateState &&  } */}
+        {/* <Update  /> */}
         {/* <FooterComponent
           inputChagne={inputChagne}
           setInputChagne={setInputChagne}

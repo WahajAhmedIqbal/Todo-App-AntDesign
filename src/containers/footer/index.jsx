@@ -3,7 +3,7 @@ import Create from "../../components/todo/create";
 import { PlusCircleTwoTone } from "@ant-design/icons";
 import image from '../../assests/add.png'
 
-const Footer = ({ handlesubmit, input, setInputChagne, inputChagne }) => {
+const Footer = ({ inputChagne, setInputChagne, handlesubmit, }) => {
   const [inputtype, setinputtype] = useState(false);
 
   const handleInput = () => {
@@ -41,7 +41,6 @@ const Footer = ({ handlesubmit, input, setInputChagne, inputChagne }) => {
           type="text"
           placeholder="add Item"
           value={inputChagne}
-          
           onChange={(e) => setInputChagne(e.target.value)}
         />
         <button
@@ -52,7 +51,7 @@ const Footer = ({ handlesubmit, input, setInputChagne, inputChagne }) => {
             justifySelf: "center",
           }}
         >
-          <spna
+          <span
           style={{
             position:'fixed',
             bottom: 11,
@@ -66,7 +65,7 @@ const Footer = ({ handlesubmit, input, setInputChagne, inputChagne }) => {
           src={image}
           onClick={handleInput}
           /> 
-          </spna>
+          </span>
           {/* <PlusCircleTwoTone
           onClick={handleInput}
              onClick={handlesubmit}
