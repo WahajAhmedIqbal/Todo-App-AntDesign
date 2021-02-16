@@ -20,9 +20,9 @@ const Header = () => {
      <span className='icon' style={{fontSize:16, color: 'cornflowerblue'}}>
       <AppstoreOutlined />
       </span>
-      <spna className='heading' style={{marginLeft:'-23px', marginTop: 8}}>
+      <span className='heading' style={{marginLeft:'-23px', marginTop: 8}}>
         <h1 style={{fontSize: 15}}>All Task</h1>
-        </spna>
+        </span>
         <span className="empty-box"></span>
     </div>
   );

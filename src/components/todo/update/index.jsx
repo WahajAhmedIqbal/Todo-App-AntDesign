@@ -14,7 +14,7 @@ const Update = ({setUpdatedInput, updateFun, cancelFun, updatedInput}) => {
         position: "sticky",
         bottom: 1,
         textAlign: "center",
-        height: 138,
+        height: 148,
         backgroundImage:
           " linear-gradient(to bottom, rgba(500,73,49,0), azure)",
       }}
@@ -32,7 +32,7 @@ const Update = ({setUpdatedInput, updateFun, cancelFun, updatedInput}) => {
             borderRadius: 20,
             outline: 'none',
             textAlign: 'center',
-            backgroundColor: 'whitesmoke'
+            backgroundColor: '#aac8f5'
           }}
           type="text"
           value={updatedInput}
@@ -54,16 +54,18 @@ const Update = ({setUpdatedInput, updateFun, cancelFun, updatedInput}) => {
           }}
           className='img'>
           <img
+          className='animate__animated animate__backInRight'
           style={{
-            width:60,
+            width:55,
             marginRight: 40
           }}
           src={check}
           onClick={() => updateFun()}
           /> 
           <img
+          className='animate__animated animate__backInLeft'
           style={{
-            width:60
+            width:55
           }}
           src={cancel}
           onClick={cancelFun}

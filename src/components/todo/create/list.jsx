@@ -1,28 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Delete from "../deleted";
 import { EditOutlined } from "@ant-design/icons";
 
 const List = ({ item, deleteHander, id, onEdit }) => {
+  const [delfun, setDelfun] = useState(false);
+  // console.log("🚀 ~ file: list.jsx ~ line 6 ~ List ~ id", id,delfun)
 
-  const [delfun, setDelfun] = useState(false)
-  console.log(delfun)
+  const handleClass = () => {
+    setDelfun(true);
+    setTimeout(() => {
+    setDelfun(false);
+    deleteHander(id);
+    }, 500);
+  };
 
-  const deletefunction = (e) => {
-    e.preventDefault()
-    setDelfun(!delfun)
-    console.log(delfun)
-  }
-  let classes = !delfun ? 'animate__animated animate__fadeInUp' : 'animate__animated animate__fadeOutLeft'
-  console.log(classes)
+  useEffect(()=>{
+
+  },[])
+
+
+  let classes = !delfun
+    ? "animate__animated animate__fadeInUp"
+    : "animate__animated animate__fadeOutLeft";
 
   return (
-    <div>
+    <div >
+      {/* <button onClick={handleClass}>click change cls</button> */}
       <li
         className={classes}
         key={id}
         style={{
           backgroundColor: "white",
-          margin: '2px 4px 16px ',
+          margin: "2px 4px 16px ",
           boxShadow: "rgb(204 204 204 / 40%) 0px 19px 4px -11px",
           padding: "9px 31px 32px 29px",
           listStyle: "none",
@@ -36,11 +45,12 @@ const List = ({ item, deleteHander, id, onEdit }) => {
         }}
       >
         {item}
-        <div className="inputelemet" style={{ display: '-webkit-inline-box' }}>
-          <EditOutlined  style={{paddingRight:10}}onClick={() => onEdit(id)}/>
-          {/* <span onSubmit={(e) => deletefunction(e)}> */}
-           <Delete id={id} onselected={deleteHander} />
-          {/* </span> */}
+        <div className="inputelemet" style={{ display: "-webkit-inline-box" }}>
+          <EditOutlined
+            style={{ paddingRight: 10 }}
+            onClick={() => onEdit(id)}
+          />
+          <Delete id={id} onselected={handleClass} />
         </div>
       </li>
     </div>
