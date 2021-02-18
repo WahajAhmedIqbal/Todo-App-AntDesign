@@ -1,82 +1,71 @@
 import React, { useState } from "react";
-import image from "../../assests/add.png";
+import image from "../../assets/add.png";
+import "./footerStyle.css";
 
-const Footer = ({ inputChagne, setInputChagne, handlesubmit }) => {
-  const [inputtype, setinputtype] = useState(false);
-  const [rotat, setRotat] = useState(false);
+const Footer = ({ inputChange, setInputChange, handleSubmit }) => {
+  const [inputType, setInputType] = useState(false);
+  const [rotate, setRotate] = useState(false);
   const [colo, setColo] = useState(false);
 
   const handleInput = () => {
-    setinputtype(!inputtype);
-    setRotat(!rotat);
+    setInputType(!inputType);
+    setRotate(!rotate);
     setColo(!colo);
   };
 
-  let classes = !inputtype ? "none " : null;
-  let rot = rotat ? "rotate(45deg)" : null;
+  let classes = !inputType ? "none " : null;
+  let rot = rotate ? "rotate(45deg)" : null;
   let colour = colo ? "#f95454" : "cornflowerblue";
 
-  return (
-    <div
-      style={{
-        position: "sticky",
-        bottom: "-10px",
-        textAlign: "center",
-        height: 149,
-        backgroundImage:
-          " linear-gradient(to bottom, rgba(500,73,49,0), azure)",
-      }}
-    >
-      <form onSubmit={handlesubmit} style={{ display: "grid" }}>
-        <input
-          className="animate__animated animate__pulse animate__faster"
+  // Render Function
+  const _RenderInput = () => {
+    return (
+      <input
+        className="animate__animated animate__pulse animate__faster"
+        style={{
+          display: classes,
+          height: 41,
+          width: "98%",
+          justifySelf: "center",
+          border: "none",
+          marginBottom: 50,
+          borderRadius: 20,
+          outline: "none",
+          textAlign: "center",
+          backgroundColor: "#aac8f5",
+        }}
+        type="text"
+        placeholder="Add Items"
+        value={inputChange}
+        onChange={(e) => setInputChange(e.target.value)}
+      />
+    );
+  };
+
+  const _RenderButton = () => {
+    return (
+      <button className="animate__fadeOut footer-btn add-btn">
+        <img
           style={{
-            display: classes,
-            height: 41,
-            width: "98%",
-            justifySelf: "center",
-            border: "none",
-            marginBottom: 50,
-            borderRadius: 20,
-            outline: "none",
-            textAlign: "center",
-            backgroundColor: "#aac8f5",
+            width: 60,
+            transform: rot,
+            backgroundColor: colour,
+            borderRadius: 43,
+            transitionDuration: "0.3s",
           }}
-          type="text"
-          placeholder="Add Items"
-          value={inputChagne}
-          onChange={(e) => setInputChagne(e.target.value)}
+          className="add-img"
+          src={image}
+          onClick={handleInput}
         />
-        <button
-          className="animate__fadeOut "
-          style={{
-            background: "none",
-            border: "none",
-            width: "fit-content",
-            justifySelf: "center",
-          }}
-        >
-          <span
-            style={{
-              position: "fixed",
-              bottom: 11,
-              left: "42%",
-            }}
-            className="img"
-          >
-            <img
-              style={{
-                width: 60,
-                transform: rot,
-                backgroundColor: colour,
-                borderRadius: 43,
-                transitionDuration: "0.3s",
-              }}
-              src={image}
-              onClick={handleInput}
-            />
-          </span>
-        </button>
+      </button>
+    );
+  };
+
+  return (
+    <div className="footer-main-box">
+      <form onSubmit={handleSubmit} className="form-main-box">
+        {_RenderInput()}
+        {_RenderButton()}
       </form>
     </div>
   );

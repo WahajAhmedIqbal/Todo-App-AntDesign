@@ -1,0 +1,20 @@
+.liStyling {
+  background-color: white;
+  margin: 2px 4px 16px;
+  box-shadow: rgb(204 204 204 / 40%) 0px 19px 4px -11px;
+  padding: 9px 31px 32px 29px;
+  list-style: none;
+  font-size: 15px;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  height: 13px;
+  width: 97%;
+  border-radius: 27px;
+}
+.editStyling {
+  padding-right: 10px;
+}
+.buttonStyle {
+  display: -webkit-inline-box;
+}

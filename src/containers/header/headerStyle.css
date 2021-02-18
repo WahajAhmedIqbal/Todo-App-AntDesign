@@ -1,0 +1,21 @@
+.header-main-box {
+  position: sticky;
+  top: 5px;
+  text-align: center;
+  z-index: 1;
+  padding: 16px;
+  display: flex;
+  place-content: space-between;
+  background-image: linear-gradient(to top, rgba(500, 73, 49, 0), azure);
+}
+.icon {
+  font-size: 16px;
+  color: cornflowerblue;
+}
+.heading {
+  margin-left: -23px;
+  margin-top: 8px;
+}
+.heading1 {
+  font-size: 15px;
+}

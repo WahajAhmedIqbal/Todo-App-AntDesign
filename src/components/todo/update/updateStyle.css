@@ -1,0 +1,41 @@
+.main-update-box {
+  position: sticky;
+  bottom: 1px;
+  text-align: center;
+  /* height: 150px; */
+  background-image: linear-gradient(to bottom, rgba(500, 73, 49, 0), azure);
+}
+
+.form-box {
+  display: grid;
+}
+.input-box {
+  display: null;
+  height: 41px;
+  width: 98%;
+  justify-self: center;
+  border: none;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  outline: none;
+  text-align: center;
+  background-color: #aac8f5;
+}
+.btn-style {
+  background: none;
+  border: none;
+  width: fit-content;
+  justify-self: center;
+}
+.span1- {
+  position: fixed;
+  bottom: 11px;
+  left: 28%;
+}
+.update-img {
+  width: 55px;
+  margin-right: 40px;
+}
+.cancel-img {
+  width: 55px;
+}

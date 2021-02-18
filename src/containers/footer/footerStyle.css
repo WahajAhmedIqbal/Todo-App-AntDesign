@@ -1,0 +1,30 @@
+.form-main-box {
+  display: grid;
+  height: 23.2vh;
+}
+.footer-main-box {
+  position: sticky;
+  bottom: -10px;
+  text-align: center;
+  height: 149;
+  background-image: linear-gradient(to bottom, rgba(500, 73, 49, 0), azure);
+}
+
+.footer-btn {
+  background: none;
+  border: none;
+  width: fit-content;
+  justify-self: center;
+}
+.add-btn {
+  position: fixed;
+  bottom: 11px;
+  left: 42%;
+}
+.img-box {
+  width: 60px;
+  transform: rot;
+  background-color: colour;
+  border-radius: 43;
+  transition-duration: "0.3s";
+}

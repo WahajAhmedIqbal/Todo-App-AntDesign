@@ -1,78 +1,44 @@
 import React, { useState } from "react";
-import cancel from '../../../assests/cancel.png'
-import check from '../../../assests/check.png'
+import cancel from "../../../assets/cancel.png";
+import check from "../../../assets/check.png";
+import "./updateStyle.css";
 
+const Update = ({ setUpdatedInput, updateFun, cancelFun, updatedInput }) => {
+  const updateForm = (e) => {
+    e.preventDefault();
+  };
 
-const Update = ({setUpdatedInput, updateFun, cancelFun, updatedInput}) => {
-
-  const updateform = (e) => {
-    e.preventDefault()
-  }
-  return (
-      <div
-      style={{
-        position: "sticky",
-        bottom: 1,
-        textAlign: "center",
-        height: 148,
-        backgroundImage:
-          " linear-gradient(to bottom, rgba(500,73,49,0), azure)",
-      }}
-    >
-   <form style={{ display: "grid" }} onSubmit={e => updateform(e)}>
-        <input
-          className=''
-          style={{
-            display: null,
-            height: 41,
-            width: "98%",
-            justifySelf: "center",
-            border: "none",
-            marginBottom: 50,
-            borderRadius: 20,
-            outline: 'none',
-            textAlign: 'center',
-            backgroundColor: '#aac8f5'
-          }}
-          type="text"
-          value={updatedInput}
-          onChange={(e) => setUpdatedInput(e.target.value)}
-        />
-        <button
-          style={{
-            background: "none",
-            border: "none",
-            width: "fit-content",
-            justifySelf: "center",
-          }}
-        >
-          <span
-          style={{
-            position:'fixed',
-            bottom: 11,
-            left: '28%'
-          }}
-          className='img'>
-          <img
-          className='animate__animated animate__backInRight'
-          style={{
-            width:55,
-            marginRight: 40
-          }}
+  const _RenderInput = () => (
+    <input
+      className="input-box"
+      type="text"
+      value={updatedInput}
+      onChange={(e) => setUpdatedInput(e.target.value)}
+    />
+  );
+  const _RenderButton = () => (
+    <button className="btn-style">
+      <span className="span1-" className="img">
+        <img
+          className="animate__animated animate__backInRight update-img"
           src={check}
           onClick={() => updateFun()}
-          /> 
-          <img
-          className='animate__animated animate__backInLeft'
-          style={{
-            width:55
-          }}
+        />
+        <img
+          className="animate__animated animate__backInLeft cancel-img"
           src={cancel}
           onClick={cancelFun}
-          /> 
-          </span>
-        </button>
-   </form>
+        />
+      </span>
+    </button>
+  );
+
+  return (
+    <div className="main-update-box">
+      <form className="form-box" onSubmit={(e) => updateForm(e)}>
+        {_RenderInput()}
+        {_RenderButton()}
+      </form>
     </div>
   );
 };

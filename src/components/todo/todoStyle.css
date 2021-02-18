@@ -1,0 +1,12 @@
+.container {
+  background-color: aliceblue;
+}
+.section-style {
+  min-height: 66.2vh;
+}
+.list-item-Style {
+  font-size: 35px;
+  text-align: center;
+  padding-top: 35px;
+  color: darkgrey;
+}
